@@ -7,9 +7,13 @@ class TopicsController < ApplicationController
     @topics = Topic.all
   end
 
+  def about
+
+  end
   # GET /topics/1
   # GET /topics/1.json
   def show
+
   end
 
   # GET /topics/new
@@ -67,10 +71,12 @@ class TopicsController < ApplicationController
     redirect_to(topics_path)
   end
 
-  def upvote1
+  def downvote
     @topic = Topic.find(params[:id])
-    @topic.votes.first.destroy
-    redirect_to(topics_path)
+    #if @topic.votes > 0
+      @topic.votes.first.try(:destroy)
+      redirect_to(topics_path)
+
   end
 
   private

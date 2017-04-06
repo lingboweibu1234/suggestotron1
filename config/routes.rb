@@ -3,9 +3,8 @@ Rails.application.routes.draw do
  resources :topics do
    member do
      post 'upvote'
-   end
-   member do
-     post 'upvote1'
+     post 'downvote'
    end
  end
+get 'about' => 'topics#about'
 end
